@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: #111;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding-top: 40px;
+    }
+
+    .settings-container {
+      background-color: #222;
+      border: 3px solid #fff;
+      border-radius: 12px;
+      padding: 30px;
+      width: 420px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    h1 { text-align: center; margin-bottom: 10px; }
+    hr { border: none; border-top: 2px solid #fff; margin-bottom: 20px; }
+
+    .setting {
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    label { font-size: 1em; }
+
+    select, input[type="text"], input[type="number"], input[type="date"] {
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 5px;
+      width: 200px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      background-color: orange;
+      color: black;
+      cursor: pointer;
+    }
+
+    button:hover { background-color: darkorange; }
+
+    #status {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.9em;
+      color: limegreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-container">
+    <h1>⚙️ Settings</h1>
+    <hr>
+
+    <!-- Type Name option -->
+    <div class="setting">
+      <label for="username">👤 Type Name</label>
+      <input type="text" id="username" placeholder="Enter your name">
+    </div>
+
+    <!-- Background color option -->
+    <div class="setting">
+      <label for="bgColor">🎨 Background</label>
+      <select id="bgColor">
+        <option value="orange">Orange</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="linear-gradient(to right, red, yellow)">Red → Yellow Gradient</option>
+        <option value="linear-gradient(to right, blue, purple)">Blue → Purple Gradient</option>
+        <option value="linear-gradient(to right, green, lime)">Green → Lime Gradient</option>
+        <option value="linear-gradient(to right, pink, violet)">Pink → Violet Gradient</option>
+        <option value="linear-gradient(to right, cyan, navy)">Cyan → Navy Gradient</option>
+      </select>
+    </div>
+
+    <!-- Emoji option -->
+    <div class="setting">
+      <label for="emoji">😊 Emoji</label>
+      <input type="text" id="emoji" placeholder="Type an emoji (e.g. 🍰)">
+    </div>
+
+    <!-- Timer duration option -->
+    <div class="setting">
+      <label for="timerSeconds">⏱ Timer (seconds)</label>
+      <input type="number" id="timerSeconds" placeholder="e.g. 60">
+    </div>
+
+    <!-- Target date option -->
+    <div class="setting">
+      <label for="targetDate">📅 Target Date</label>
+      <input type="date" id="targetDate">
+    </div>
+
+    <button onclick="saveSettings()">💾 Save Settings</button>
+    <div id="status"></div>
+  </div>
+<script>
+  function saveSettings() {
+    const username = document.getElementById('username').value;
+    const bgColor = document.getElementById('bgColor').value;
+    let emoji = document.getElementById('emoji').value.trim();
+    const timerSeconds = document.getElementById('timerSeconds').value;
+    const targetDate = document.getElementById('targetDate').value;
+
+    // Dictionary of word → emoji
+    const emojiMap = {
+      "cake": "🍰",
+      "birthday": "🎂",
+      "party": "🎉",
+      "balloon": "🎈",
+      "gift": "🎁",
+      "heart": "❤️",
+      "star": "⭐",
+      "smile": "😊"
+    };
+
+    // If user typed a word that matches, convert to emoji
+    if (emoji && emojiMap[emoji.toLowerCase()]) {
+      emoji = emojiMap[emoji.toLowerCase()];
+    }
+
+    if (username) localStorage.setItem("savedName", username);
+    localStorage.setItem("savedBg", bgColor);
+
+    if (emoji) localStorage.setItem("savedEmoji", emoji);
+    if (timerSeconds) localStorage.setItem("savedTimer", timerSeconds);
+    if (targetDate) localStorage.setItem("savedDate", targetDate);
+
+    document.getElementById('status').textContent = "✅ Settings saved!";
+    setTimeout(() => {
+      document.getElementById('status').textContent = "";
+    }, 2000);
+  }
+
+  window.onload = function() {
+    const savedName = localStorage.getItem("savedName");
+    const savedBg = localStorage.getItem("savedBg");
+    const savedEmoji = localStorage.getItem("savedEmoji");
+    const savedTimer = localStorage.getItem("savedTimer");
+    const savedDate = localStorage.getItem("savedDate");
+
+    if (savedName) document.getElementById('username').value = savedName;
+    if (savedBg) document.getElementById('bgColor').value = savedBg;
+    if (savedEmoji) document.getElementById('emoji').value = savedEmoji;
+    if (savedTimer) document.getElementById('timerSeconds').value = savedTimer;
+    if (savedDate) document.getElementById('targetDate').value = savedDate;
+  }
+</script>
+
+</body>
+</html>
