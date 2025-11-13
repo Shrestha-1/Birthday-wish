@@ -2,340 +2,378 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Orange Background with Timer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday 🎉</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg1: #0d0f1a;
+      --bg2: #1a1f36;
+      --accent: #ff4d6d; /* pink accent */
+      --gold: #ffd166;
+      --pink: #ff4d6d;
+      --blue: #6ec6ff;
+      --green: #69f0ae;
+      --white: #f7f7ff;
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: monospace;
-      transition: background 0.5s ease;
-      overflow: hidden;
-      padding: 10px;
+      min-height: 100vh;
+      background: radial-gradient(1200px 800px at 70% 30%, var(--bg2), var(--bg1));
+      color: var(--white);
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      overflow-x: hidden;
     }
-    .container {
-      width: 520px;
-      max-width: 95vw;
-      padding: 30px 40px;
-      background-color: rgba(0,0,0,0.75);
-      border: 5px solid white;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-      display: flex;
-      align-items: center;
-      color: white;
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(2px 2px at 20% 10%, #ffffff55, #0000 60%),
+        radial-gradient(2px 2px at 80% 30%, #ffffff33, #0000 60%),
+        radial-gradient(2px 2px at 40% 70%, #ffffff66, #0000 60%),
+        radial-gradient(1px 1px at 60% 50%, #ffffff22, #0000 60%);
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      to {
+        filter: brightness(1.4);
+      }
+    }
+
+    header {
+      position: relative;
       z-index: 2;
-    }
-    .day-circle {
-      width: 110px;
-      height: 110px;
-      border: 4px solid white;
-      border-radius: 50%;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      margin-right: 30px;
-      background-color: #222;
-      box-shadow: inset 0 0 12px rgba(255,255,255,0.3);
-      user-select: none;
-      flex-shrink: 0;
+      justify-content: center;
+      padding: 40px 16px 8px;
+      text-align: center;
     }
-    #day {
-      font-size: 1.8em;
+    .title {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(40px, 6vw, 92px);
+      line-height: 1.05;
+      color: var(--pink);
+      text-shadow:
+        0 0 12px #ff4d6d99,
+        0 0 28px #ff4d6d77,
+        0 0 60px #ff4d6d55;
+      animation: glow 3.5s ease-in-out infinite;
     }
-    #week {
-      font-size: 1.1em;
-      color: #ccc;
+    @keyframes glow {
+      0%,
+      100% {
+        filter: drop-shadow(0 0 0 var(--pink));
+        transform: translateY(0);
+      }
+      50% {
+        filter: drop-shadow(0 0 6px #ff4d6daa);
+        transform: translateY(-2px);
+      }
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: clamp(16px, 2.4vw, 24px);
+      color: #dfe6ff;
+      opacity: 0.9;
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .confetti span {
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      border-radius: 3px;
+      opacity: 0.9;
+      animation: fall var(--dur) linear infinite;
+      transform: rotate(var(--rot));
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(var(--rot));
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(calc(var(--rot) + 360deg));
+        opacity: 0.8;
+      }
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      max-width: 940px;
+      margin: 24px auto;
+      padding: 24px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .panel {
+      background: linear-gradient(135deg, #1e243d 0%, #161a2c 100%);
+      border: 1px solid #2b3358;
+      border-radius: 18px;
+      padding: clamp(18px, 3.2vw, 28px);
+      box-shadow: 0 12px 40px #00000055, inset 0 0 20px #ffffff08;
+    }
+
+    .hero-emoji {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: clamp(28px, 4.5vw, 56px);
+      filter: drop-shadow(0 4px 10px #00000066);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .wish {
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.6;
+      color: #eaf0ff;
+    }
+    .wish strong {
+      color: var(--pink);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(110px, 1fr));
+      gap: 14px;
       margin-top: 6px;
     }
-    #timer {
-      font-size: 3.8em;
-      letter-spacing: 6px;
-      margin-bottom: 12px;
+    .timebox {
+      background: #0f1324;
+      border: 1px solid #2b3358;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
     }
-    .label {
+    .timebox .num {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--pink);
+      text-shadow: 0 0 12px #ff4d6d44;
+    }
+    .timebox .lab {
+      margin-top: 4px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #b8c3ff;
+    }
+
+    .footer {
+      text-align: center;
+      color: #cbd6ff;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .btns {
       display: flex;
-      justify-content: space-between;
-      width: 100%;
-      font-size: 1.2em;
-      opacity: 0.8;
-      letter-spacing: 1.5px;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
     }
-    .label span {
-      flex: 1;
-      text-align: center;
-    }
-    #wishMessage {
-      margin-top: 30px;
-      font-size: 1.7em;
-      text-shadow: 2px 2px 3px black;
+    .btn {
+      background: linear-gradient(135deg, var(--pink), var(--accent));
       color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 18px #ff4d6d33;
+      transition: transform 0.12s ease, box-shadow 0.2s ease;
     }
-    #birthdayMessage {
-      margin-top: 15px;
-      font-size: 2em;
-      font-weight: bold;
-      text-align: center;
-      color: gold;
-      z-index: 2;
-    }
-    .balloon {
-      position: absolute;
-      bottom: -120px;
-      font-size: 3.5em;
-      animation: floatUp 15s linear forwards, pulse 3s infinite;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-110vh); opacity: 0; }
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      33% { transform: scale(1.2) rotate(10deg); }
-      66% { transform: scale(0.9) rotate(-10deg); }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px #ff4d6d55;
     }
 
-    /* Responsive Styles */
-    @media (max-width: 600px) {
-      .container {
-        flex-direction: column;
-        width: 95vw;
-        padding: 25px 20px;
-        text-align: center;
-      }
-      .day-circle {
-        width: 90px;
-        height: 90px;
-        margin: 0 0 20px 0;
-      }
-      #day {
-        font-size: 1.5em;
-      }
-      #week {
-        font-size: 0.95em;
-      }
-      #timer {
-        font-size: 3em;
-        letter-spacing: 4px;
-        margin-bottom: 12px;
-      }
-      .label {
-        font-size: 1.1em;
-      }
-      #wishMessage {
-        font-size: 1.4em;
-        margin-top: 25px;
-      }
-      #birthdayMessage {
-        font-size: 1.7em;
-        margin-top: 12px;
-      }
-    }
-
-    @media (min-width: 601px) and (max-width: 1200px) {
-      .container {
-        width: 460px;
-        padding: 28px 35px;
-      }
-      .day-circle {
-        width: 95px;
-        height: 95px;
-        margin-right: 25px;
-      }
-      #day {
-        font-size: 1.6em;
-      }
-      #week {
-        font-size: 1em;
-      }
-      #timer {
-        font-size: 3.3em;
-        letter-spacing: 5px;
-        margin-bottom: 11px;
-      }
-      .label {
-        font-size: 1.15em;
-      }
-      #wishMessage {
-        font-size: 1.5em;
-        margin-top: 28px;
-      }
-      #birthdayMessage {
-        font-size: 1.8em;
-        margin-top: 13px;
+    /* Mobile */
+    @media (max-width: 560px) {
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="day-circle">
-      <div id="day">Mon</div>
-      <div id="week">Week</div>
+  <div class="stars"></div>
+  <div class="confetti" id="confetti"></div>
+
+  <header>
+    <div>
+      <div class="title">Happy Birthday 🎂</div>
+      <div class="subtitle">Sending surprises across the miles ✨</div>
     </div>
-    <div class="timer-box">
-      <div id="timer">00:00:00:00</div>
-      <div class="label">
-        <span>Days</span>
-        <span>Hr</span>
-        <span>Min</span>
-        <span>Sec</span>
+  </header>
+
+  <main class="card">
+    <section class="panel">
+      <div class="hero-emoji">🎉 🎂 ✨ 💖 🎁 🌸 🌟 🎶</div>
+      <p class="wish">
+        <strong>Dear Nanu,</strong><br />
+        Even though I’m far away, my heart is right there celebrating you today.
+        May your day shimmer with joy, laughter, and little surprises that make you smile.
+        Here’s a sparkle-filled wish, just for you ✨
+      </p>
+      <div class="signature">— From someone who’s thinking of you, always 💫</div>
+
+      <div class="btns">
+        <button class="btn" id="toggleConfetti">More confetti 🎊</button>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="wishMessage"></div>
-  <div id="birthdayMessage"></div>
-<script>
-  let clickCount = 0;
-  let timerInterval;
-  let totalSeconds;
+    <section class="panel">
+      <h2 style="margin: 0 0 10px 0; font-size: 22px; text-align: center;">
+        Countdown to your birthday....miss!
+      </h2>
 
-  function startTimer() {
-    const savedTimer = localStorage.getItem("savedTimer");
-    const savedDate = localStorage.getItem("savedDate");
+      <div class="countdown">
+        <div class="timebox">
+          <div class="num" id="days">--</div>
+          <div class="lab">Days</div>
+        </div>
+        <div class="timebox">
+          <div class="num" id="hours">--</div>
+          <div class="lab">Hours</div>
+        </div>
+        <div class="timebox">
+          <div class="num" id="mins">--</div>
+          <div class="lab">Minutes</div>
+        </div>
+        <div class="timebox">
+          <div class="num" id="secs">--</div>
+          <div class="lab">Seconds</div>
+        </div>
+      </div>
+      <p style="margin-top: 24px; color: #cbd6ff; text-align: center;">
+        A special day for a special soul 💖
+      </p>
+    </section>
 
-    if (savedTimer) {
-      totalSeconds = Number(savedTimer);
-      timerInterval = setInterval(updateSecondsCountdown, 1000);
-    } else if (savedDate) {
-      timerInterval = setInterval(updateDateCountdown, 1000);
-    } else {
-      // Default: friend’s birthday after 20 days from now
-      const defaultDate = new Date();
-      defaultDate.setDate(defaultDate.getDate() + 20);
-      localStorage.setItem("savedDate", defaultDate.toISOString());
-      localStorage.setItem("savedName", "My Friend"); // optional default name
-      timerInterval = setInterval(updateDateCountdown, 1000);
-    }
-  }
+    <section class="panel footer">
+      <div>Made with love, emojis, and a little bit of stardust ✨</div>
+    </section>
+  </main>
 
-  function updateDateCountdown() {
-    const savedDate = localStorage.getItem("savedDate");
-    const savedName = localStorage.getItem("savedName");
-    const target = new Date(savedDate);
-    const now = new Date();
-    const diff = target - now;
-
-    if (diff <= 0) {
-      clearInterval(timerInterval);
-      document.getElementById('timer').textContent = "00:00:00:00";
-      document.getElementById('wishMessage').textContent = "";
-      document.getElementById('birthdayMessage').textContent =
-        `🎉 Happy Birthday ${savedName || ""} 🎂 Many Wishes!`;
-      launchBalloons();
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById('timer').textContent =
-      `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
-
-    if (days > 1) {
-      document.getElementById('wishMessage').textContent = `${days} days left to wish you!`;
-    } else if (days === 1) {
-      document.getElementById('wishMessage').textContent = `1 day left to wish you!`;
-    } else {
-      if (hours > 0) {
-        document.getElementById('wishMessage').textContent =
-          `${hours} hr ${minutes} min ${seconds} sec left to wish you!`;
-      } else if (minutes > 0) {
-        document.getElementById('wishMessage').textContent =
-          `${minutes} min ${seconds} sec left to wish you!`;
-      } else {
-        document.getElementById('wishMessage').textContent =
-          `${seconds} sec left to wish you!`;
+  <script>
+    // Confetti generator
+    const confetti = document.getElementById("confetti");
+    function dropConfetti(count = 80) {
+      const colors = ["#ff4d6d", "#ff7af5", "#ffd1e8"]; // pink shades
+      const heights = [0.9, 1.0, 1.1];
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement("span");
+        const left = Math.random() * 100;
+        const dur = (6 + Math.random() * 5).toFixed(2) + "s";
+        const rot = (Math.random() * 360).toFixed(1) + "deg";
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const h = heights[Math.floor(Math.random() * heights.length)];
+        s.style.left = left + "vw";
+        s.style.background = color;
+        s.style.setProperty("--dur", dur);
+        s.style.setProperty("--rot", rot);
+        s.style.height = 14 + Math.random() * 10 + "px";
+        s.style.width = 8 + Math.random() * 6 + "px";
+        s.style.opacity = 0.8;
+        s.style.transform = `translateY(-${Math.random() * 40}vh) rotate(${rot}) scale(${h})`;
+        confetti.appendChild(s);
+        setTimeout(() => s.remove(), 12000);
       }
     }
-  }
+    dropConfetti(120);
+    document.getElementById("toggleConfetti").addEventListener("click", () => dropConfetti(120));
 
-  function updateSecondsCountdown() {
-    const savedName = localStorage.getItem("savedName");
+    // Audio for birthday music
+    const birthdayMusic = new Audio("https://cdn.pixabay.com/download/audio/2022/03/14/audio_1c5c62bc26.mp3?filename=happy-birthday-11115.mp3");
+    birthdayMusic.preload = "auto";
 
-    if (totalSeconds <= 0) {
-      clearInterval(timerInterval);
-      document.getElementById('timer').textContent = "00:00:00:00";
-      document.getElementById('wishMessage').textContent = "";
-      document.getElementById('birthdayMessage').textContent =
-        `🎉 Happy Birthday ${savedName || ""} 🎂 Many Wishes!`;
-      launchBalloons();
-      return;
+    // Countdown to Dec 2, 00:00 NPT
+    const NPT_OFFSET_MIN = 5 * 60 + 45;
+    function nptNow() {
+      const now = new Date();
+      const utcMs = now.getTime() + now.getTimezoneOffset() * 60_000;
+      return new Date(utcMs + NPT_OFFSET_MIN * 60_000);
     }
-
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    document.getElementById('timer').textContent =
-      `${String(days).padStart(2,'0')}:${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
-
-    if (days > 1) {
-      document.getElementById('wishMessage').textContent = `${days} days left to wish you!`;
-    } else if (days === 1) {
-      document.getElementById('wishMessage').textContent = `1 day left to wish you!`;
-    } else {
-      if (hours > 0) {
-        document.getElementById('wishMessage').textContent =
-          `${hours} hr ${minutes} min ${seconds} sec left to wish you!`;
-      } else if (minutes > 0) {
-        document.getElementById('wishMessage').textContent =
-          `${minutes} min ${seconds} sec left to wish you!`;
-      } else {
-        document.getElementById('wishMessage').textContent =
-          `${seconds} sec left to wish you!`;
-      }
+    function targetNPT() {
+      const nowNPT = nptNow();
+      const year =
+        nowNPT.getMonth() === 11 && nowNPT.getDate() > 2 ? nowNPT.getFullYear() + 1 : nowNPT.getFullYear();
+      return new Date(Date.UTC(year, 11, 1, 18, 15, 0));
     }
+    const tNPT = targetNPT();
+    const dEl = document.getElementById("days");
+    const hEl = document.getElementById("hours");
+    const mEl = document.getElementById("mins");
+    const sEl = document.getElementById("secs");
 
-    totalSeconds--;
-  }
+    function updateCountdown() {
+      const now = nptNow();
+      let diff = tNPT.getTime() - now.getTime();
+      if (diff <= 0) {
+        dEl.textContent = "0";
+        hEl.textContent = "0";
+        mEl.textContent = "0";
+        sEl.textContent = "0";
+        document.querySelector(".subtitle").textContent = "It’s your birthday — let’s celebrate! 🎉";
 
-  function updateDayLabel() {
-    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const today = new Date();
-    document.getElementById('day').textContent = daysOfWeek[today.getDay()];
-    document.getElementById('week').textContent = "Week";
-  }
+        // Play music only once
+        if (!birthdayMusic.playedOnce) {
+          birthdayMusic.playedOnce = true;
+          birthdayMusic.play();
 
-  function applyBackground() {
-    const savedBg = localStorage.getItem("savedBg");
-    document.body.style.background = savedBg || "orange";
-  }
+          // Show big confetti burst now
+          dropConfetti(200);
 
-  function launchBalloons() {
-    const savedEmoji = localStorage.getItem("savedEmoji") || "🎈";
-    let waves = 0;
-    const waveInterval = setInterval(() => {
-      waves++;
-      for (let i = 0; i < 5; i++) {
-        const balloon = document.createElement("div");
-        balloon.className = "balloon";
-        balloon.textContent = savedEmoji;
-        balloon.style.left = Math.random() * 100 + "vw";
-        document.body.appendChild(balloon);
-        setTimeout(() => balloon.remove(), 15000);
+          // After music ends, redirect to new page
+          birthdayMusic.onended = () => {
+            window.location.href = "https://your-new-page-url.com"; // <-- Change this URL!
+          };
+        }
+        return;
       }
-      if (waves === 5) clearInterval(waveInterval);
-    }, 3000);
-  }
+      const sec = Math.floor(diff / 1000);
+      const days = Math.floor(sec / 86400);
+      const hours = Math.floor((sec % 86400) / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = sec % 60;
+      dEl.textContent = days;
+      hEl.textContent = hours.toString().padStart(2, "0");
+      mEl.textContent = mins.toString().padStart(2, "0");
+      sEl.textContent = secs.toString().padStart(2, "0");
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-  document.getElementById('day').addEventListener('click', function() {
-    clickCount++;
-    if (clickCount === 10) window.location.href = "settings.html";
-  });
-
-  updateDayLabel();
-  applyBackground();
-  startTimer();
-</script>
-
+    // Gentle fade-in
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.style.opacity = 0;
+      document.body.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, fill: "forwards" });
+    });
+  </script>
 </body>
-</html>
+</html> 
