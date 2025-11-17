@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- (keep your existing head unchanged) -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday 🎉</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
   <style>
-    /* (keep your existing styles here) */
-    :root { --bg1: #0d0f1a; --bg2: #1a1f36; --accent: #ff4d6d; /* pink accent */ --gold: #ffd166; --pink: #ff4d6d; --blue: #6ec6ff; --green: #69f0ae; --white: #f7f7ff; } * { box-sizing: border-box; } body { margin: 0; min-height: 100vh; background: radial-gradient(1200px 800px at 70% 30%, var(--bg2), var(--bg1)); color: var(--white); font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; overflow-x: hidden; } .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(2px 2px at 20% 10%, #ffffff55, #0000 60%), radial-gradient(2px 2px at 80% 30%, #ffffff33, #0000 60%), radial-gradient(2px 2px at 40% 70%, #ffffff66, #0000 60%), radial-gradient(1px 1px at 60% 50%, #ffffff22, #0000 60%); animation: twinkle 6s ease-in-out infinite alternate; } @keyframes twinkle { to { filter: brightness(1.4); } } header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 40px 16px 8px; text-align: center; } .title { font-family: "Great Vibes", cursive; font-size: clamp(40px, 6vw, 92px); line-height: 1.05; color: var(--pink); text-shadow: 0 0 12px #ff4d6d99, 0 0 28px #ff4d6d77, 0 0 60px #ff4d6d55; animation: glow 3.5s ease-in-out infinite; } @keyframes glow { 0%, 100% { filter: drop-shadow(0 0 0 var(--pink)); transform: translateY(0); } 50% { filter: drop-shadow(0 0 6px #ff4d6daa); transform: translateY(-2px); } } .subtitle { margin-top: 10px; font-size: clamp(16px, 2.4vw, 24px); color: #dfe6ff; opacity: 0.9; } .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1; } .confetti span { position: absolute; width: 10px; height: 18px; border-radius: 3px; opacity: 0.9; animation: fall var(--dur) linear infinite; transform: rotate(var(--rot)); } @keyframes fall { 0% { transform: translateY(-10vh) rotate(var(--rot)); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(110vh) rotate(calc(var(--rot) + 360deg)); opacity: 0.8; } } .card { position: relative; z-index: 2; max-width: 940px; margin: 24px auto; padding: 24px; display: grid; gap: 20px; } .panel { background: linear-gradient(135deg, #1e243d 0%, #161a2c 100%); border: 1px solid #2b3358; border-radius: 18px; padding: clamp(18px, 3.2vw, 28px); box-shadow: 0 12px 40px #00000055, inset 0 0 20px #ffffff08; } .hero-emoji { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-size: clamp(28px, 4.5vw, 56px); filter: drop-shadow(0 4px 10px #00000066); animation: float 4s ease-in-out infinite; } @keyframes float { 50% { transform: translateY(-6px); } } .wish { font-size: clamp(18px, 2.2vw, 22px); line-height: 1.6; color: #eaf0ff; } .wish strong { color: var(--pink); } .countdown { display: grid; grid-template-columns: repeat(4, minmax(110px, 1fr)); gap: 14px; margin-top: 6px; } .timebox { background: #0f1324; border: 1px solid #2b3358; border-radius: 14px; padding: 16px; text-align: center; } .timebox .num { font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--pink); text-shadow: 0 0 12px #ff4d6d44; } .timebox .lab { margin-top: 4px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #b8c3ff; } .footer { text-align: center; color: #cbd6ff; font-size: 14px; opacity: 0.9; } .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; } .btn { background: linear-gradient(135deg, var(--pink), var(--accent)); color: white; border: none; border-radius: 12px; padding: 10px 16px; font-weight: 600; cursor: pointer; box-shadow: 0 8px 18px #ff4d6d33; transition: transform 0.12s ease, box-shadow 0.2s ease; } .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px #ff4d6d55; } /* Mobile */ @media (max-width: 560px) { .countdown { grid-template-columns: repeat(2, 1fr); } }
     :root {
       --bg1: #0d0f1a;
       --bg2: #1a1f36;
-      --accent: #ff4d6d;
+      --accent: #ff4d6d; /* pink accent */
       --gold: #ffd166;
       --pink: #ff4d6d;
       --blue: #6ec6ff;
@@ -32,9 +29,198 @@
       overflow-x: hidden;
       position: relative;
     }
-    /* your existing styles omitted here for brevity, keep them as is */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(2px 2px at 20% 10%, #ffffff55, #0000 60%),
+        radial-gradient(2px 2px at 80% 30%, #ffffff33, #0000 60%),
+        radial-gradient(2px 2px at 40% 70%, #ffffff66, #0000 60%),
+        radial-gradient(1px 1px at 60% 50%, #ffffff22, #0000 60%);
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      to {
+        filter: brightness(1.4);
+      }
+    }
 
-    /* Heart emoji that follows mouse/touch (your existing) */
+    header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px 8px;
+      text-align: center;
+    }
+    .title {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(40px, 6vw, 92px);
+      line-height: 1.05;
+      color: var(--pink);
+      text-shadow:
+        0 0 12px #ff4d6d99,
+        0 0 28px #ff4d6d77,
+        0 0 60px #ff4d6d55;
+      animation: glow 3.5s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,
+      100% {
+        filter: drop-shadow(0 0 0 var(--pink));
+        transform: translateY(0);
+      }
+      50% {
+        filter: drop-shadow(0 0 6px #ff4d6daa);
+        transform: translateY(-2px);
+      }
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: clamp(16px, 2.4vw, 24px);
+      color: #dfe6ff;
+      opacity: 0.9;
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .confetti span {
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      border-radius: 3px;
+      opacity: 0.9;
+      animation: fall var(--dur) linear infinite;
+      transform: rotate(var(--rot));
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(var(--rot));
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(calc(var(--rot) + 360deg));
+        opacity: 0.8;
+      }
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      max-width: 940px;
+      margin: 24px auto;
+      padding: 24px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .panel {
+      background: linear-gradient(135deg, #1e243d 0%, #161a2c 100%);
+      border: 1px solid #2b3358;
+      border-radius: 18px;
+      padding: clamp(18px, 3.2vw, 28px);
+      box-shadow: 0 12px 40px #00000055, inset 0 0 20px #ffffff08;
+    }
+
+    .hero-emoji {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: clamp(28px, 4.5vw, 56px);
+      filter: drop-shadow(0 4px 10px #00000066);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .wish {
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.6;
+      color: #eaf0ff;
+    }
+    .wish strong {
+      color: var(--pink);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(110px, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+    }
+    .timebox {
+      background: #0f1324;
+      border: 1px solid #2b3358;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+    .timebox .num {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--pink);
+      text-shadow: 0 0 12px #ff4d6d44;
+    }
+    .timebox .lab {
+      margin-top: 4px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #b8c3ff;
+    }
+
+    .footer {
+      text-align: center;
+      color: #cbd6ff;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn {
+      background: linear-gradient(135deg, var(--pink), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 18px #ff4d6d33;
+      transition: transform 0.12s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px #ff4d6d55;
+    }
+
+    /* Mobile */
+    @media (max-width: 560px) {
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Heart emoji that follows mouse/touch */
     #follow-heart {
       position: fixed;
       pointer-events: none;
@@ -92,7 +278,6 @@
   </style>
 </head>
 <body>
-  <!-- your existing body content unchanged -->
   <div class="stars"></div>
   <div class="confetti" id="confetti"></div>
 
@@ -159,7 +344,7 @@
   <div id="heart-trail"></div>
 
   <script>
-    // Your existing countdown code here (keep as is)...
+    // Accurate UTC time fetching
     async function getAccurateUTC() {
       try {
         let res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
@@ -220,7 +405,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Heart follow effect (your existing)
+    // Heart follow effect
     const heart = document.getElementById("follow-heart");
     let hideTimeout;
 
@@ -246,32 +431,27 @@
       }
     });
 
-    // New: Multiple floating hearts trail on mouse/touch
-
+    // Multiple floating hearts trail on mouse/touch
     const heartTrail = document.getElementById("heart-trail");
 
     function createFloatingHeart(x, y) {
       const floatingHeart = document.createElement("div");
       floatingHeart.className = "floating-heart";
 
-      // You can choose different heart emojis or colors if you want:
       const heartEmojis = ["🧡", "💖", "💗", "💘", "❤️"];
       const emoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
       floatingHeart.textContent = emoji;
 
-      // Slight horizontal random offset so hearts don’t stack exactly
       const offsetX = (Math.random() - 0.5) * 30;
-      const offsetY = (Math.random() - 0.5) * 20; // small vertical jitter
+      const offsetY = (Math.random() - 0.5) * 20;
 
       floatingHeart.style.left = (x + offsetX) + "px";
       floatingHeart.style.top = (y + offsetY) + "px";
 
-      // Random animation duration between 1.2s and 1.8s
       floatingHeart.style.animationDuration = (1.2 + Math.random() * 0.6) + "s";
 
       heartTrail.appendChild(floatingHeart);
 
-      // Remove element after animation completes
       floatingHeart.addEventListener("animationend", () => {
         floatingHeart.remove();
       });
@@ -279,7 +459,6 @@
 
     let lastSpawnTime = 0;
     function handleMove(e) {
-      e.preventDefault();
       let x, y;
       if (e.touches) {
         x = e.touches[0].clientX;
@@ -290,7 +469,6 @@
       }
       const now = Date.now();
 
-      // Spawn max ~20 hearts per second for performance
       if (now - lastSpawnTime > 50) {
         createFloatingHeart(x, y);
         lastSpawnTime = now;
@@ -298,7 +476,7 @@
     }
 
     window.addEventListener("mousemove", handleMove);
-    window.addEventListener("touchmove", handleMove, { passive: false });
+    window.addEventListener("touchmove", handleMove, { passive: true }); // allow scroll on mobile
   </script>
 </body>
 </html>
