@@ -11,10 +11,7 @@
       --bg1: #0d0f1a;
       --bg2: #1a1f36;
       --accent: #ff4d6d; /* pink accent */
-      --gold: #ffd166;
       --pink: #ff4d6d;
-      --blue: #6ec6ff;
-      --green: #69f0ae;
       --white: #f7f7ff;
     }
     * {
@@ -46,7 +43,6 @@
         filter: brightness(1.4);
       }
     }
-
     header {
       position: relative;
       z-index: 2;
@@ -68,8 +64,7 @@
       animation: glow 3.5s ease-in-out infinite;
     }
     @keyframes glow {
-      0%,
-      100% {
+      0%, 100% {
         filter: drop-shadow(0 0 0 var(--pink));
         transform: translateY(0);
       }
@@ -78,43 +73,12 @@
         transform: translateY(-2px);
       }
     }
-
     .subtitle {
       margin-top: 10px;
       font-size: clamp(16px, 2.4vw, 24px);
       color: #dfe6ff;
       opacity: 0.9;
     }
-
-    .confetti {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .confetti span {
-      position: absolute;
-      width: 10px;
-      height: 18px;
-      border-radius: 3px;
-      opacity: 0.9;
-      animation: fall var(--dur) linear infinite;
-      transform: rotate(var(--rot));
-    }
-    @keyframes fall {
-      0% {
-        transform: translateY(-10vh) rotate(var(--rot));
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(calc(var(--rot) + 360deg));
-        opacity: 0.8;
-      }
-    }
-
     .card {
       position: relative;
       z-index: 2;
@@ -124,7 +88,6 @@
       display: grid;
       gap: 20px;
     }
-
     .panel {
       background: linear-gradient(135deg, #1e243d 0%, #161a2c 100%);
       border: 1px solid #2b3358;
@@ -132,7 +95,6 @@
       padding: clamp(18px, 3.2vw, 28px);
       box-shadow: 0 12px 40px #00000055, inset 0 0 20px #ffffff08;
     }
-
     .hero-emoji {
       display: flex;
       gap: 12px;
@@ -147,7 +109,6 @@
         transform: translateY(-6px);
       }
     }
-
     .wish {
       font-size: clamp(18px, 2.2vw, 22px);
       line-height: 1.6;
@@ -156,7 +117,6 @@
     .wish strong {
       color: var(--pink);
     }
-
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, minmax(110px, 1fr));
@@ -183,34 +143,41 @@
       text-transform: uppercase;
       color: #b8c3ff;
     }
-
     .footer {
       text-align: center;
       color: #cbd6ff;
       font-size: 14px;
       opacity: 0.9;
     }
-    .btns {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 12px;
+
+    /* Confetti container */
+    #confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
     }
-    .btn {
-      background: linear-gradient(135deg, var(--pink), var(--accent));
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 10px 16px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 8px 18px #ff4d6d33;
-      transition: transform 0.12s ease, box-shadow 0.2s ease;
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      border-radius: 3px;
+      opacity: 0.9;
+      will-change: transform, opacity;
     }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px #ff4d6d55;
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(var(--rot));
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(calc(var(--rot) + 360deg));
+        opacity: 0.8;
+      }
     }
 
     /* Mobile */
@@ -219,67 +186,23 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+.gift-box {
+  margin: 24px auto 0;
+  width: 100%;
+  max-width: 830px;
+  height: 120px;
+  border: 3px solid #ff4d6d;
+  border-radius: 16px;
+  background: rgba(255, 77, 109, 0.1);
+  box-shadow: 0 6px 18px rgba(255, 77, 109, 0.3);
+}
 
-    /* Heart emoji that follows mouse/touch */
-    #follow-heart {
-      position: fixed;
-      pointer-events: none;
-      font-size: 40px;
-      color: var(--pink);
-      user-select: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      animation: pulse 1.5s ease-in-out infinite;
-      will-change: transform, opacity;
-    }
-    @keyframes pulse {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.2);
-      }
-    }
 
-    /* Container for floating hearts */
-    #heart-trail {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      overflow: visible;
-      z-index: 9998; /* just below #follow-heart */
-    }
-
-    /* Each floating heart */
-    .floating-heart {
-      position: absolute;
-      font-size: 20px;
-      color: var(--pink);
-      user-select: none;
-      will-change: transform, opacity;
-      animation: floatUp 1.5s ease forwards;
-      opacity: 1;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-80px) scale(1.5);
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="stars"></div>
-  <div class="confetti" id="confetti"></div>
+  <div id="confetti"></div>
 
   <header>
     <div>
@@ -298,17 +221,12 @@
         Here’s a sparkle-filled wish, just for you ✨
       </p>
       <div class="signature">— From someone who’s thinking of you, always 💫</div>
-
-      <div class="btns">
-        <button class="btn" id="toggleConfetti">More confetti 🎊</button>
-      </div>
     </section>
 
     <section class="panel">
       <h2 style="margin: 0 0 10px 0; font-size: 22px; text-align: center;">
         Countdown to your birthday....miss!
       </h2>
-
       <div class="countdown">
         <div class="timebox">
           <div class="num" id="days">--</div>
@@ -326,25 +244,17 @@
           <div class="num" id="secs">--</div>
           <div class="lab">Seconds</div>
         </div>
-      </div>
-      <p style="margin-top: 24px; color: #cbd6ff; text-align: center;">
-        A special day for a special soul 💖
-      </p>
-    </section>
+ <div class="gift-box"></div>
+
+</section>
 
     <section class="panel footer">
       <div>Made with love, emojis, and a little bit of stardust ✨</div>
     </section>
   </main>
 
-  <!-- Heart emoji that follows mouse/touch -->
-  <div id="follow-heart">🧡</div>
-
-  <!-- Container for floating hearts -->
-  <div id="heart-trail"></div>
-
   <script>
-    // Accurate UTC time fetching
+    // Countdown logic (UTC-based, your original logic)
     async function getAccurateUTC() {
       try {
         let res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
@@ -405,78 +315,103 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Heart follow effect
-    const heart = document.getElementById("follow-heart");
-    let hideTimeout;
+    // --- Confetti logic ---
 
-    function showHeart(x, y) {
-      heart.style.left = x + "px";
-      heart.style.top = y + "px";
-      heart.style.opacity = "1";
-      heart.style.transform = "translate(-50%, -50%) scale(1)";
-      if (hideTimeout) clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(() => {
-        heart.style.opacity = "0";
-      }, 1000);
+    const confettiContainer = document.getElementById('confetti');
+
+    // Utility to create one confetti piece
+    function createConfettiPiece({ leftPercent, duration, delay, size, rotate }) {
+      const span = document.createElement('span');
+      span.classList.add('confetti-piece');
+      span.style.setProperty('--rot', rotate + 'deg');
+      span.style.left = leftPercent + 'vw';
+      span.style.width = size + 'px';
+      span.style.height = size * 1.8 + 'px';
+      span.style.backgroundColor = `hsl(${Math.random() * 360}, 90%, 70%)`;
+      span.style.animationDuration = duration + 's';
+      span.style.animationDelay = delay + 's';
+      span.style.animationName = 'fall';
+      span.style.animationTimingFunction = 'linear';
+      span.style.animationIterationCount = 'infinite';
+      confettiContainer.appendChild(span);
+      return span;
     }
 
-    window.addEventListener("mousemove", e => {
-      showHeart(e.clientX, e.clientY);
-    });
+    // Create initial burst: 30 confetti pieces, all with finite animation for 10s
+    function createInitialBurst() {
+      for(let i=0; i < 30; i++) {
+        const left = Math.random() * 100; // vw
+        const duration = 3 + Math.random() * 2; // 3-5 seconds per fall
+        const delay = Math.random() * 2; // stagger start
+        const size = 8 + Math.random() * 6; // 8-14 px width
+        const rotate = Math.random() * 360;
+        const span = document.createElement('span');
+        span.classList.add('confetti-piece');
+        span.style.setProperty('--rot', rotate + 'deg');
+        span.style.left = left + 'vw';
+        span.style.width = size + 'px';
+        span.style.height = size * 1.8 + 'px';
+        span.style.backgroundColor = `hsl(${Math.random() * 360}, 90%, 70%)`;
+        span.style.animationDuration = duration + 's';
+        span.style.animationDelay = delay + 's';
+        span.style.animationName = 'fall';
+        span.style.animationTimingFunction = 'linear';
+        span.style.animationIterationCount = '1';
+        confettiContainer.appendChild(span);
 
-    window.addEventListener("touchmove", e => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        showHeart(touch.clientX, touch.clientY);
+        // Remove piece after animation ends to clean DOM
+        span.addEventListener('animationend', () => {
+          span.remove();
+        });
       }
-    });
-
-    // Multiple floating hearts trail on mouse/touch
-    const heartTrail = document.getElementById("heart-trail");
-
-    function createFloatingHeart(x, y) {
-      const floatingHeart = document.createElement("div");
-      floatingHeart.className = "floating-heart";
-
-      const heartEmojis = ["🧡", "💖", "💗", "💘", "❤️"];
-      const emoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-      floatingHeart.textContent = emoji;
-
-      const offsetX = (Math.random() - 0.5) * 30;
-      const offsetY = (Math.random() - 0.5) * 20;
-
-      floatingHeart.style.left = (x + offsetX) + "px";
-      floatingHeart.style.top = (y + offsetY) + "px";
-
-      floatingHeart.style.animationDuration = (1.2 + Math.random() * 0.6) + "s";
-
-      heartTrail.appendChild(floatingHeart);
-
-      floatingHeart.addEventListener("animationend", () => {
-        floatingHeart.remove();
-      });
     }
 
-    let lastSpawnTime = 0;
-    function handleMove(e) {
-      let x, y;
-      if (e.touches) {
-        x = e.touches[0].clientX;
-        y = e.touches[0].clientY;
+    // Create gentle infinite background confetti (small amount)
+    let backgroundConfettiPieces = [];
+    function createBackgroundConfetti() {
+      // Clear any existing pieces first
+      backgroundConfettiPieces.forEach(p => p.remove());
+      backgroundConfettiPieces = [];
+
+      // Create about 10 slow falling pieces with infinite loop
+      for(let i=0; i < 10; i++) {
+        const left = Math.random() * 100; // vw
+        const duration = 15 + Math.random() * 15; // 15-30s slow fall
+        const delay = Math.random() * duration;
+        const size = 6 + Math.random() * 5; // smaller confetti
+        const rotate = Math.random() * 360;
+        const span = createConfettiPiece({
+          leftPercent: left,
+          duration: duration,
+          delay: -delay, // negative delay so they start at random progress
+          size,
+          rotate,
+        });
+        backgroundConfettiPieces.push(span);
+      }
+    }
+
+    // Main logic:
+    // On first visit: show burst for 10s, then start background confetti
+    // On repeat visits: immediately show background confetti
+
+    function startConfettiFlow() {
+      if (!localStorage.getItem('birthdayConfettiDone')) {
+        // First visit
+        createInitialBurst();
+
+        setTimeout(() => {
+          createBackgroundConfetti();
+          localStorage.setItem('birthdayConfettiDone', 'true');
+        }, 10000); // after 10 seconds burst ends
       } else {
-        x = e.clientX;
-        y = e.clientY;
-      }
-      const now = Date.now();
-
-      if (now - lastSpawnTime > 50) {
-        createFloatingHeart(x, y);
-        lastSpawnTime = now;
+        // Repeat visit, just background confetti
+        createBackgroundConfetti();
       }
     }
 
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("touchmove", handleMove, { passive: true }); // allow scroll on mobile
+    startConfettiFlow();
+
   </script>
 </body>
 </html>
