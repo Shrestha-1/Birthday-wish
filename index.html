@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- (keep your existing head unchanged) -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday 🎉</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
   <style>
+    /* (keep your existing styles here) */
+    :root { --bg1: #0d0f1a; --bg2: #1a1f36; --accent: #ff4d6d; /* pink accent */ --gold: #ffd166; --pink: #ff4d6d; --blue: #6ec6ff; --green: #69f0ae; --white: #f7f7ff; } * { box-sizing: border-box; } body { margin: 0; min-height: 100vh; background: radial-gradient(1200px 800px at 70% 30%, var(--bg2), var(--bg1)); color: var(--white); font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; overflow-x: hidden; } .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(2px 2px at 20% 10%, #ffffff55, #0000 60%), radial-gradient(2px 2px at 80% 30%, #ffffff33, #0000 60%), radial-gradient(2px 2px at 40% 70%, #ffffff66, #0000 60%), radial-gradient(1px 1px at 60% 50%, #ffffff22, #0000 60%); animation: twinkle 6s ease-in-out infinite alternate; } @keyframes twinkle { to { filter: brightness(1.4); } } header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; padding: 40px 16px 8px; text-align: center; } .title { font-family: "Great Vibes", cursive; font-size: clamp(40px, 6vw, 92px); line-height: 1.05; color: var(--pink); text-shadow: 0 0 12px #ff4d6d99, 0 0 28px #ff4d6d77, 0 0 60px #ff4d6d55; animation: glow 3.5s ease-in-out infinite; } @keyframes glow { 0%, 100% { filter: drop-shadow(0 0 0 var(--pink)); transform: translateY(0); } 50% { filter: drop-shadow(0 0 6px #ff4d6daa); transform: translateY(-2px); } } .subtitle { margin-top: 10px; font-size: clamp(16px, 2.4vw, 24px); color: #dfe6ff; opacity: 0.9; } .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1; } .confetti span { position: absolute; width: 10px; height: 18px; border-radius: 3px; opacity: 0.9; animation: fall var(--dur) linear infinite; transform: rotate(var(--rot)); } @keyframes fall { 0% { transform: translateY(-10vh) rotate(var(--rot)); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(110vh) rotate(calc(var(--rot) + 360deg)); opacity: 0.8; } } .card { position: relative; z-index: 2; max-width: 940px; margin: 24px auto; padding: 24px; display: grid; gap: 20px; } .panel { background: linear-gradient(135deg, #1e243d 0%, #161a2c 100%); border: 1px solid #2b3358; border-radius: 18px; padding: clamp(18px, 3.2vw, 28px); box-shadow: 0 12px 40px #00000055, inset 0 0 20px #ffffff08; } .hero-emoji { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-size: clamp(28px, 4.5vw, 56px); filter: drop-shadow(0 4px 10px #00000066); animation: float 4s ease-in-out infinite; } @keyframes float { 50% { transform: translateY(-6px); } } .wish { font-size: clamp(18px, 2.2vw, 22px); line-height: 1.6; color: #eaf0ff; } .wish strong { color: var(--pink); } .countdown { display: grid; grid-template-columns: repeat(4, minmax(110px, 1fr)); gap: 14px; margin-top: 6px; } .timebox { background: #0f1324; border: 1px solid #2b3358; border-radius: 14px; padding: 16px; text-align: center; } .timebox .num { font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--pink); text-shadow: 0 0 12px #ff4d6d44; } .timebox .lab { margin-top: 4px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #b8c3ff; } .footer { text-align: center; color: #cbd6ff; font-size: 14px; opacity: 0.9; } .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; } .btn { background: linear-gradient(135deg, var(--pink), var(--accent)); color: white; border: none; border-radius: 12px; padding: 10px 16px; font-weight: 600; cursor: pointer; box-shadow: 0 8px 18px #ff4d6d33; transition: transform 0.12s ease, box-shadow 0.2s ease; } .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px #ff4d6d55; } /* Mobile */ @media (max-width: 560px) { .countdown { grid-template-columns: repeat(2, 1fr); } }
     :root {
       --bg1: #0d0f1a;
       --bg2: #1a1f36;
-      --accent: #ff4d6d; /* pink accent */
+      --accent: #ff4d6d;
       --gold: #ffd166;
       --pink: #ff4d6d;
       --blue: #6ec6ff;
@@ -27,200 +30,69 @@
       color: var(--white);
       font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       overflow-x: hidden;
-    }
-    .stars {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        radial-gradient(2px 2px at 20% 10%, #ffffff55, #0000 60%),
-        radial-gradient(2px 2px at 80% 30%, #ffffff33, #0000 60%),
-        radial-gradient(2px 2px at 40% 70%, #ffffff66, #0000 60%),
-        radial-gradient(1px 1px at 60% 50%, #ffffff22, #0000 60%);
-      animation: twinkle 6s ease-in-out infinite alternate;
-    }
-    @keyframes twinkle {
-      to {
-        filter: brightness(1.4);
-      }
-    }
-
-    header {
       position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 16px 8px;
-      text-align: center;
     }
-    .title {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(40px, 6vw, 92px);
-      line-height: 1.05;
+    /* your existing styles omitted here for brevity, keep them as is */
+
+    /* Heart emoji that follows mouse/touch (your existing) */
+    #follow-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 40px;
       color: var(--pink);
-      text-shadow:
-        0 0 12px #ff4d6d99,
-        0 0 28px #ff4d6d77,
-        0 0 60px #ff4d6d55;
-      animation: glow 3.5s ease-in-out infinite;
+      user-select: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      animation: pulse 1.5s ease-in-out infinite;
+      will-change: transform, opacity;
     }
-    @keyframes glow {
-      0%,
-      100% {
-        filter: drop-shadow(0 0 0 var(--pink));
-        transform: translateY(0);
+    @keyframes pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
       }
       50% {
-        filter: drop-shadow(0 0 6px #ff4d6daa);
-        transform: translateY(-2px);
+        transform: translate(-50%, -50%) scale(1.2);
       }
     }
 
-    .subtitle {
-      margin-top: 10px;
-      font-size: clamp(16px, 2.4vw, 24px);
-      color: #dfe6ff;
-      opacity: 0.9;
-    }
-
-    .confetti {
+    /* Container for floating hearts */
+    #heart-trail {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      z-index: 1;
+      overflow: visible;
+      z-index: 9998; /* just below #follow-heart */
     }
-    .confetti span {
+
+    /* Each floating heart */
+    .floating-heart {
       position: absolute;
-      width: 10px;
-      height: 18px;
-      border-radius: 3px;
-      opacity: 0.9;
-      animation: fall var(--dur) linear infinite;
-      transform: rotate(var(--rot));
+      font-size: 20px;
+      color: var(--pink);
+      user-select: none;
+      will-change: transform, opacity;
+      animation: floatUp 1.5s ease forwards;
+      opacity: 1;
     }
-    @keyframes fall {
+
+    @keyframes floatUp {
       0% {
-        transform: translateY(-10vh) rotate(var(--rot));
-        opacity: 0;
-      }
-      10% {
+        transform: translateY(0) scale(1);
         opacity: 1;
       }
       100% {
-        transform: translateY(110vh) rotate(calc(var(--rot) + 360deg));
-        opacity: 0.8;
-      }
-    }
-
-    .card {
-      position: relative;
-      z-index: 2;
-      max-width: 940px;
-      margin: 24px auto;
-      padding: 24px;
-      display: grid;
-      gap: 20px;
-    }
-
-    .panel {
-      background: linear-gradient(135deg, #1e243d 0%, #161a2c 100%);
-      border: 1px solid #2b3358;
-      border-radius: 18px;
-      padding: clamp(18px, 3.2vw, 28px);
-      box-shadow: 0 12px 40px #00000055, inset 0 0 20px #ffffff08;
-    }
-
-    .hero-emoji {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      font-size: clamp(28px, 4.5vw, 56px);
-      filter: drop-shadow(0 4px 10px #00000066);
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float {
-      50% {
-        transform: translateY(-6px);
-      }
-    }
-
-    .wish {
-      font-size: clamp(18px, 2.2vw, 22px);
-      line-height: 1.6;
-      color: #eaf0ff;
-    }
-    .wish strong {
-      color: var(--pink);
-    }
-
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(110px, 1fr));
-      gap: 14px;
-      margin-top: 6px;
-    }
-    .timebox {
-      background: #0f1324;
-      border: 1px solid #2b3358;
-      border-radius: 14px;
-      padding: 16px;
-      text-align: center;
-    }
-    .timebox .num {
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 700;
-      color: var(--pink);
-      text-shadow: 0 0 12px #ff4d6d44;
-    }
-    .timebox .lab {
-      margin-top: 4px;
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #b8c3ff;
-    }
-
-    .footer {
-      text-align: center;
-      color: #cbd6ff;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-    .btns {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .btn {
-      background: linear-gradient(135deg, var(--pink), var(--accent));
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 10px 16px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 8px 18px #ff4d6d33;
-      transition: transform 0.12s ease, box-shadow 0.2s ease;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px #ff4d6d55;
-    }
-
-    /* Mobile */
-    @media (max-width: 560px) {
-      .countdown {
-        grid-template-columns: repeat(2, 1fr);
+        transform: translateY(-80px) scale(1.5);
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
+  <!-- your existing body content unchanged -->
   <div class="stars"></div>
   <div class="confetti" id="confetti"></div>
 
@@ -280,100 +152,153 @@
     </section>
   </main>
 
+  <!-- Heart emoji that follows mouse/touch -->
+  <div id="follow-heart">🧡</div>
+
+  <!-- Container for floating hearts -->
+  <div id="heart-trail"></div>
+
   <script>
-    // Confetti generator
-    const confetti = document.getElementById("confetti");
-    function dropConfetti(count = 80) {
-      const colors = ["#ff4d6d", "#ff7af5", "#ffd1e8"]; // pink shades
-      const heights = [0.9, 1.0, 1.1];
-      for (let i = 0; i < count; i++) {
-        const s = document.createElement("span");
-        const left = Math.random() * 100;
-        const dur = (6 + Math.random() * 5).toFixed(2) + "s";
-        const rot = (Math.random() * 360).toFixed(1) + "deg";
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const h = heights[Math.floor(Math.random() * heights.length)];
-        s.style.left = left + "vw";
-        s.style.background = color;
-        s.style.setProperty("--dur", dur);
-        s.style.setProperty("--rot", rot);
-        s.style.height = 14 + Math.random() * 10 + "px";
-        s.style.width = 8 + Math.random() * 6 + "px";
-        s.style.opacity = 0.8;
-        s.style.transform = `translateY(-${Math.random() * 40}vh) rotate(${rot}) scale(${h})`;
-        confetti.appendChild(s);
-        setTimeout(() => s.remove(), 12000);
+    // Your existing countdown code here (keep as is)...
+    async function getAccurateUTC() {
+      try {
+        let res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
+        let json = await res.json();
+        return new Date(json.utc_datetime);
+      } catch (e1) {
+        try {
+          let res2 = await fetch("https://timeapi.io/api/Time/current/zone?timeZone=UTC");
+          let json2 = await res2.json();
+          return new Date(json2.dateTime);
+        } catch (e2) {
+          console.warn("Both time APIs failed, using device time fallback.");
+          return new Date();
+        }
       }
     }
-    dropConfetti(120);
-    document.getElementById("toggleConfetti").addEventListener("click", () => dropConfetti(120));
 
-    // Audio for birthday music
-    const birthdayMusic = new Audio("https://cdn.pixabay.com/download/audio/2022/03/14/audio_1c5c62bc26.mp3?filename=happy-birthday-11115.mp3");
-    birthdayMusic.preload = "auto";
+    function getTargetTimeUTC() {
+      const year = new Date().getUTCFullYear();
+      let target = new Date(Date.UTC(year, 11, 1, 18, 15, 0));
+      if (new Date() > target) {
+        target = new Date(Date.UTC(year + 1, 11, 1, 18, 15, 0));
+      }
+      return target;
+    }
 
-    // Countdown to Dec 2, 00:00 NPT
-    const NPT_OFFSET_MIN = 5 * 60 + 45;
-    function nptNow() {
-      const now = new Date();
-      const utcMs = now.getTime() + now.getTimezoneOffset() * 60_000;
-      return new Date(utcMs + NPT_OFFSET_MIN * 60_000);
-    }
-    function targetNPT() {
-      const nowNPT = nptNow();
-      const year =
-        nowNPT.getMonth() === 11 && nowNPT.getDate() > 2 ? nowNPT.getFullYear() + 1 : nowNPT.getFullYear();
-      return new Date(Date.UTC(year, 11, 1, 18, 15, 0));
-    }
-    const tNPT = targetNPT();
+    const targetUTC = getTargetTimeUTC();
+
     const dEl = document.getElementById("days");
     const hEl = document.getElementById("hours");
     const mEl = document.getElementById("mins");
     const sEl = document.getElementById("secs");
 
-    function updateCountdown() {
-      const now = nptNow();
-      let diff = tNPT.getTime() - now.getTime();
+    async function updateCountdown() {
+      const utcNow = await getAccurateUTC();
+      const diff = targetUTC - utcNow;
+
       if (diff <= 0) {
         dEl.textContent = "0";
-        hEl.textContent = "0";
-        mEl.textContent = "0";
-        sEl.textContent = "0";
-        document.querySelector(".subtitle").textContent = "It’s your birthday — let’s celebrate! 🎉";
-
-        // Play music only once
-        if (!birthdayMusic.playedOnce) {
-          birthdayMusic.playedOnce = true;
-          birthdayMusic.play();
-
-          // Show big confetti burst now
-          dropConfetti(200);
-
-          // After music ends, redirect to new page
-          birthdayMusic.onended = () => {
-            window.location.href = "https://your-new-page-url.com"; // <-- Change this URL!
-          };
-        }
+        hEl.textContent = "00";
+        mEl.textContent = "00";
+        sEl.textContent = "00";
         return;
       }
-      const sec = Math.floor(diff / 1000);
-      const days = Math.floor(sec / 86400);
-      const hours = Math.floor((sec % 86400) / 3600);
-      const mins = Math.floor((sec % 3600) / 60);
-      const secs = sec % 60;
+
+      const totalSec = Math.floor(diff / 1000);
+      const days = Math.floor(totalSec / 86400);
+      const hours = Math.floor((totalSec % 86400) / 3600);
+      const mins = Math.floor((totalSec % 3600) / 60);
+      const secs = totalSec % 60;
+
       dEl.textContent = days;
       hEl.textContent = hours.toString().padStart(2, "0");
       mEl.textContent = mins.toString().padStart(2, "0");
       sEl.textContent = secs.toString().padStart(2, "0");
     }
+
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Gentle fade-in
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.style.opacity = 0;
-      document.body.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, fill: "forwards" });
+    // Heart follow effect (your existing)
+    const heart = document.getElementById("follow-heart");
+    let hideTimeout;
+
+    function showHeart(x, y) {
+      heart.style.left = x + "px";
+      heart.style.top = y + "px";
+      heart.style.opacity = "1";
+      heart.style.transform = "translate(-50%, -50%) scale(1)";
+      if (hideTimeout) clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        heart.style.opacity = "0";
+      }, 1000);
+    }
+
+    window.addEventListener("mousemove", e => {
+      showHeart(e.clientX, e.clientY);
     });
+
+    window.addEventListener("touchmove", e => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        showHeart(touch.clientX, touch.clientY);
+      }
+    });
+
+    // New: Multiple floating hearts trail on mouse/touch
+
+    const heartTrail = document.getElementById("heart-trail");
+
+    function createFloatingHeart(x, y) {
+      const floatingHeart = document.createElement("div");
+      floatingHeart.className = "floating-heart";
+
+      // You can choose different heart emojis or colors if you want:
+      const heartEmojis = ["🧡", "💖", "💗", "💘", "❤️"];
+      const emoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      floatingHeart.textContent = emoji;
+
+      // Slight horizontal random offset so hearts don’t stack exactly
+      const offsetX = (Math.random() - 0.5) * 30;
+      const offsetY = (Math.random() - 0.5) * 20; // small vertical jitter
+
+      floatingHeart.style.left = (x + offsetX) + "px";
+      floatingHeart.style.top = (y + offsetY) + "px";
+
+      // Random animation duration between 1.2s and 1.8s
+      floatingHeart.style.animationDuration = (1.2 + Math.random() * 0.6) + "s";
+
+      heartTrail.appendChild(floatingHeart);
+
+      // Remove element after animation completes
+      floatingHeart.addEventListener("animationend", () => {
+        floatingHeart.remove();
+      });
+    }
+
+    let lastSpawnTime = 0;
+    function handleMove(e) {
+      e.preventDefault();
+      let x, y;
+      if (e.touches) {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+      } else {
+        x = e.clientX;
+        y = e.clientY;
+      }
+      const now = Date.now();
+
+      // Spawn max ~20 hearts per second for performance
+      if (now - lastSpawnTime > 50) {
+        createFloatingHeart(x, y);
+        lastSpawnTime = now;
+      }
+    }
+
+    window.addEventListener("mousemove", handleMove);
+    window.addEventListener("touchmove", handleMove, { passive: false });
   </script>
 </body>
-</html> 
+</html>
